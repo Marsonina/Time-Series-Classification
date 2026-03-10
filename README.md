@@ -14,8 +14,6 @@ The dataset contains recordings for 661 pirates in the training set and 1,324 in
 
 ## 3. Model Development
 
-The architecture evolves through iterative testing and hyperparameter optimization using the Optuna library.
-
 * **Core Architecture**: The model utilizes a **Bidirectional LSTM** framework to process temporal dependencies.
 
 * **Feature Handling**: An **Embedding layer** specifically manipulates categorical data (n_legs, n_hands, n_eyes) to improve performance.

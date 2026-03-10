@@ -23,10 +23,7 @@ The dataset contains recordings for 661 pirates in the training set and 1,324 in
 * **Regularization**: Overfitting is controlled through **Dropout** (20% probability) and **Early Stopping** with a 50-epoch patience.
 
 * **Output Layer**: A final **Softmax layer** allows the model to output probabilities for each of the three pain classes.
-
-* **Logic Correction**: A critical fix is applied to the **majority voting** formula, which originally grouped pirate sequences incorrectly and caused poor initial test results.
-
-
+* 
 ## 4. Results
 
 The final model achieves high performance and demonstrates strong generalization capabilities.

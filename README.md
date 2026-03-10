@@ -1,32 +1,91 @@
-# Time-Series-Classification
-Time Series Classification: develop a deep learning model that classifies multivariate temporal series.
-Dataset Description
-## 🏴‍☠️ The Pirate Pain Dataset
+## 1. Project Overview
 
-Ahoy, matey! This dataset contains multivariate time series data, captured from both ordinary folk and pirates over repeated observations in time. Each sample collects temporal dynamics of body joints and pain perception, with the goal of predicting the subject’s true pain status:
+### Problem Statement
 
-* no_pain
-* low_pain
-* high_pain
+The objective of this challenge is to classify multivariate time-series data related to various pirates to determine their specific level of perceived pain. The task requires labeling each sequence as **no_pain**, **low_pain**, or **high_pain**. Success is measured primarily by the F1-score, which balances precision and recall.
 
+## 2. Data Preparation
 
-## ⚓ Files
+The dataset contains recordings for 661 pirates in the training set and 1,324 in the test set.
 
-pirate_pain_train.csv — training set
-pirate_pain_train_labels.csv — labels for the training set
-pirate_pain_test.csv — test set (with no labels)
-sample_submission.csv — an example of random submission
+* 
+**Feature Structure**: Each pirate is linked to 160 data points, each containing 40 features.
 
 
-## 🧭 Data Overview
-
-Each record represents a time step within a subject’s recording, identified by sample_index and time. The dataset includes several groups of features:
-
-* pain_survey_1–pain_survey_4 — simple rule-based sensor aggregations estimating perceived pain.
-* n_legs, n_hands, n_eyes — subject characteristics.
-* joint_00–joint_30 — continuous measurements of body joint angles (neck, elbow, knee, etc.) across time.
+* 
+**Data Types**: The features include temporal indices, four integer-based pain surveys, categorical subject traits (number of legs, hands, and eyes), and 31 real-valued body joint angles.
 
 
-## 🏴‍☠️ Task
+* 
+**Class Imbalance**: The team addresses significant imbalance by using a stratified split to ensure validation proportions match the training data.
 
-Predict the real pain level of each subject based on their time-series motion data.
+
+* 
+**Experimental Refinement**: Various preprocessing steps are tested, such as PCA for dimensionality reduction, removing highly correlated or constant joints, and adding angular velocity/acceleration to capture motion dynamics.
+
+
+
+## 3. Model Development
+
+The architecture evolves through iterative testing and hyperparameter optimization using the Optuna library.
+
+* 
+**Core Architecture**: The model utilizes a **Bidirectional LSTM** framework to process temporal dependencies.
+
+
+* 
+**Feature Handling**: An **Embedding layer** specifically manipulates categorical data (n_legs, n_hands, n_eyes) to improve performance.
+
+
+* 
+**Loss Function**: A **Weighted Cross-Entropy loss** is implemented to give higher importance to less frequent classes in the training set.
+
+
+* 
+**Regularization**: Overfitting is controlled through **Dropout** (20% probability) and **Early Stopping** with a 50-epoch patience.
+
+
+* 
+**Output Layer**: A final **Softmax layer** allows the model to output probabilities for each of the three pain classes.
+
+
+* 
+**Logic Correction**: A critical fix is applied to the **majority voting** formula, which originally grouped pirate sequences incorrectly and caused poor initial test results.
+
+
+
+## 4. Results
+
+The final model achieves high performance and demonstrates strong generalization capabilities.
+
+| Model Version | Validation F1-score | Test F1-score |
+| --- | --- | --- |
+| First LSTM Model | 0.9433 
+
+ | 0.4103 
+
+ |
+| With Embedding | 0.9375 
+
+ | 0.7086 
+
+ |
+| With Weighted Loss | 0.9411 
+
+ | 0.9107 
+
+ |
+| Stratified Sampling | 0.9272 
+
+ | 0.9287 
+
+ |
+| **Fixed Majority Vote** | <br>**0.9354** 
+
+ | <br>**0.9635** 
+
+ |
+
+The most significant performance gains come from the Embedding layer, the Weighted loss, and the correction of the Majority Voting evaluation code.
+
+Would you like me to explain the specific LaTeX formula used for the class weights in the loss function?

@@ -8,20 +8,13 @@ The objective of this challenge is to classify multivariate time-series data rel
 
 The dataset contains recordings for 661 pirates in the training set and 1,324 in the test set.
 
-* 
-**Feature Structure**: Each pirate is linked to 160 data points, each containing 40 features.
+* **Feature Structure**: Each pirate is linked to 160 data points, each containing 40 features.
 
+* **Data Types**: The features include temporal indices, four integer-based pain surveys, categorical subject traits (number of legs, hands, and eyes), and 31 real-valued body joint angles.
 
-* 
-**Data Types**: The features include temporal indices, four integer-based pain surveys, categorical subject traits (number of legs, hands, and eyes), and 31 real-valued body joint angles.
+* **Class Imbalance**: The team addresses significant imbalance by using a stratified split to ensure validation proportions match the training data.
 
-
-* 
-**Class Imbalance**: The team addresses significant imbalance by using a stratified split to ensure validation proportions match the training data.
-
-
-* 
-**Experimental Refinement**: Various preprocessing steps are tested, such as PCA for dimensionality reduction, removing highly correlated or constant joints, and adding angular velocity/acceleration to capture motion dynamics.
+* **Experimental Refinement**: Various preprocessing steps are tested, such as PCA for dimensionality reduction, removing highly correlated or constant joints, and adding angular velocity/acceleration to capture motion dynamics.
 
 
 
@@ -29,29 +22,17 @@ The dataset contains recordings for 661 pirates in the training set and 1,324 in
 
 The architecture evolves through iterative testing and hyperparameter optimization using the Optuna library.
 
-* 
-**Core Architecture**: The model utilizes a **Bidirectional LSTM** framework to process temporal dependencies.
+* **Core Architecture**: The model utilizes a **Bidirectional LSTM** framework to process temporal dependencies.
 
+* **Feature Handling**: An **Embedding layer** specifically manipulates categorical data (n_legs, n_hands, n_eyes) to improve performance.
 
-* 
-**Feature Handling**: An **Embedding layer** specifically manipulates categorical data (n_legs, n_hands, n_eyes) to improve performance.
+* **Loss Function**: A **Weighted Cross-Entropy loss** is implemented to give higher importance to less frequent classes in the training set.
 
+* **Regularization**: Overfitting is controlled through **Dropout** (20% probability) and **Early Stopping** with a 50-epoch patience.
 
-* 
-**Loss Function**: A **Weighted Cross-Entropy loss** is implemented to give higher importance to less frequent classes in the training set.
+* **Output Layer**: A final **Softmax layer** allows the model to output probabilities for each of the three pain classes.
 
-
-* 
-**Regularization**: Overfitting is controlled through **Dropout** (20% probability) and **Early Stopping** with a 50-epoch patience.
-
-
-* 
-**Output Layer**: A final **Softmax layer** allows the model to output probabilities for each of the three pain classes.
-
-
-* 
-**Logic Correction**: A critical fix is applied to the **majority voting** formula, which originally grouped pirate sequences incorrectly and caused poor initial test results.
-
+* **Logic Correction**: A critical fix is applied to the **majority voting** formula, which originally grouped pirate sequences incorrectly and caused poor initial test results.
 
 
 ## 4. Results

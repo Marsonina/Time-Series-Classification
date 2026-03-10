@@ -12,12 +12,6 @@ The dataset contains recordings for 661 pirates in the training set and 1,324 in
 
 * **Data Types**: The features include temporal indices, four integer-based pain surveys, categorical subject traits (number of legs, hands, and eyes), and 31 real-valued body joint angles.
 
-* **Class Imbalance**: The team addresses significant imbalance by using a stratified split to ensure validation proportions match the training data.
-
-* **Experimental Refinement**: Various preprocessing steps are tested, such as PCA for dimensionality reduction, removing highly correlated or constant joints, and adding angular velocity/acceleration to capture motion dynamics.
-
-
-
 ## 3. Model Development
 
 The architecture evolves through iterative testing and hyperparameter optimization using the Optuna library.

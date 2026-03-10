@@ -1,4 +1,4 @@
-### Time-Series-Classification
+# Time-Series-Classification
 Time Series Classification: develop a deep learning model that classifies multivariate temporal series.
 Dataset Description
 ## 🏴‍☠️ The Pirate Pain Dataset

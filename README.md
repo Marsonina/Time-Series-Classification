@@ -1,7 +1,7 @@
 ## Time-Series-Classification
 Time Series Classification: develop a deep learning model that classifies multivariate temporal series.
 Dataset Description
-##🏴‍☠️ The Pirate Pain Dataset
+## 🏴‍☠️ The Pirate Pain Dataset
 
 Ahoy, matey! This dataset contains multivariate time series data, captured from both ordinary folk and pirates over repeated observations in time. Each sample collects temporal dynamics of body joints and pain perception, with the goal of predicting the subject’s true pain status:
 
@@ -10,7 +10,7 @@ Ahoy, matey! This dataset contains multivariate time series data, captured from 
 * high_pain
 
 
-##⚓ Files
+## ⚓ Files
 
 pirate_pain_train.csv — training set
 pirate_pain_train_labels.csv — labels for the training set
@@ -18,7 +18,7 @@ pirate_pain_test.csv — test set (with no labels)
 sample_submission.csv — an example of random submission
 
 
-##🧭 Data Overview
+## 🧭 Data Overview
 
 Each record represents a time step within a subject’s recording, identified by sample_index and time. The dataset includes several groups of features:
 
@@ -27,6 +27,6 @@ Each record represents a time step within a subject’s recording, identified by
 * joint_00–joint_30 — continuous measurements of body joint angles (neck, elbow, knee, etc.) across time.
 
 
-##🏴‍☠️ Task
+## 🏴‍☠️ Task
 
 Predict the real pain level of each subject based on their time-series motion data.

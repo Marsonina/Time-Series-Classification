@@ -39,34 +39,4 @@ The architecture evolves through iterative testing and hyperparameter optimizati
 
 The final model achieves high performance and demonstrates strong generalization capabilities.
 
-| Model Version | Validation F1-score | Test F1-score |
-| --- | --- | --- |
-| First LSTM Model | 0.9433 
-
- | 0.4103 
-
- |
-| With Embedding | 0.9375 
-
- | 0.7086 
-
- |
-| With Weighted Loss | 0.9411 
-
- | 0.9107 
-
- |
-| Stratified Sampling | 0.9272 
-
- | 0.9287 
-
- |
-| **Fixed Majority Vote** | <br>**0.9354** 
-
- | <br>**0.9635** 
-
- |
-
-The most significant performance gains come from the Embedding layer, the Weighted loss, and the correction of the Majority Voting evaluation code.
-
-Would you like me to explain the specific LaTeX formula used for the class weights in the loss function?
+The most significant performance gains come from the Embedding layer, the Weighted loss, and Majority Voting implementation.

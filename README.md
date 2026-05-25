@@ -1,4 +1,4 @@
-# Pirate Pain Classification — AN2DL 2024
+# Pain Classification 
 
 Multivariate time-series classification challenge at Politecnico di Milano.  
 The task is to classify each pirate's perceived pain level as `no_pain`, `low_pain`, or `high_pain` based on body-joint-angle motion-capture sequences. Success is measured by **weighted F1-score**.
